@@ -78,7 +78,7 @@ export default function Index() {
               </h1>
               <p className="mb-8 leading-relaxed">
                 Get consensus from your friends and family when deciding what to
-                eat. When you are deciding what to eat "Whetever", and "I'm not
+                eat. When you are deciding what to eat "Whatever", and "I'm not
                 picky" are not valid answers. Hold equal and fair elections for
                 your meals.
               </p>
