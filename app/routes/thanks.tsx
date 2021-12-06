@@ -1,5 +1,6 @@
 import type { MetaFunction, LoaderFunction } from "remix";
 import { useLoaderData, json, Link } from "remix";
+import thanksImage from "../../images/wilhelm-gunkel-AKQlYooS72w-unsplash.jpg";
 
 type IndexData = {
   resources: Array<{ name: string; url: string }>;
@@ -26,27 +27,16 @@ export default function Index() {
             <img
               className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
               alt="hero"
-              src="https://dummyimage.com/720x600"
+              src={thanksImage}
             />
-            <div className="text-center lg:w-2/3 w-full">
+            <div className="hero-content text-center lg:w-2/3 w-full">
               <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                Microdosing synth tattooed vexillologist
+                Thank You!!!
               </h1>
               <p className="mb-8 leading-relaxed">
-                Meggings kinfolk echo park stumptown DIY, kale chips beard
-                jianbing tousled. Chambray dreamcatcher trust fund, kitsch vice
-                godard disrupt ramps hexagon mustache umami snackwave tilde
-                chillwave ugh. Pour-over meditation PBR&amp;B pickled ennui
-                celiac mlkshk freegan photo booth af fingerstache pitchfork.
+                We will let you know when things are ready to test. We might
+                also request some feedback for pricing.
               </p>
-              <div className="flex justify-center">
-                <button className="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">
-                  Button
-                </button>
-                <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-                  Button
-                </button>
-              </div>
             </div>
           </div>
         </section>
