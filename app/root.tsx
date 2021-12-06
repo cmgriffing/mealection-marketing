@@ -112,6 +112,7 @@ export const meta: MetaFunction = () => {
     "og:description":
       "It can be a hassle to get family or friends to agree on what or where to eat.Take a vote for takeout. Hold an election for home cooked meals.",
     "og:image": "https://mealection.com/hero.jpg",
+    "twitter:image": "https://mealection.com/hero.jpg",
     "og:url": "https://mealection.com",
     "twitter:card": "summary_large_image",
   };
