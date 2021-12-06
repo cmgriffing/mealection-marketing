@@ -110,8 +110,8 @@ export const meta: MetaFunction = () => {
     "og:title": "Mealection",
     "og:type": "website",
     "og:description":
-      "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
-    "og:image": "https://mealection.com/pattern.svg",
+      "It can be a hassle to get family or friends to agree on what or where to eat.Take a vote for takeout. Hold an election for home cooked meals.",
+    "og:image": "https://mealection.com/hero.jpg",
     "og:url": "https://mealection.com",
     "twitter:card": "summary_large_image",
   };

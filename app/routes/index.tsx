@@ -29,14 +29,6 @@ function Ellipsis() {
   );
 }
 
-export let meta: MetaFunction = () => {
-  return {
-    title: "Mealection",
-    description:
-      "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
-  };
-};
-
 export let action: ActionFunction = async ({ request }) => {
   let formData = await request.formData();
   let email = formData.get("email");
