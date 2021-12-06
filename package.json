@@ -2,7 +2,7 @@
   "private": true,
   "name": "remix-app-template",
   "description": "",
-  "license": "",
+  "license": "MIT",
   "scripts": {
     "tailwind:dev": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --watch",
     "tailwind:build": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --minify",
