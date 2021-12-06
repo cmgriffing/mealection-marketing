@@ -113,7 +113,7 @@ export const meta: MetaFunction = () => {
       "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
     "og:image": "https://mealection.com/pattern.png",
     "og:url": "https://mealection.com",
-    "twitter:card": "summary",
+    "twitter:card": "summary_large_image",
   };
 };
 
