@@ -101,11 +101,19 @@ export let links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Something cool",
-    description: "This becomes the nice preview on search results.",
+    title: "Mealection",
+    description:
+      "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
     "msapplication-TileColor": "#FFFFFF",
     "theme-color": "#FFFFFF",
     "msapplication-TileImage": "/ms-icon-144x144.png",
+    "og:title": "Mealection",
+    "og:type": "website",
+    "og:description":
+      "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
+    "og:image": "https://mealection.com/pattern.png",
+    "og:url": "https://mealection.com",
+    "twitter:card": "summary",
   };
 };
 

@@ -33,7 +33,7 @@ export let meta: MetaFunction = () => {
   return {
     title: "Mealection",
     description:
-      "Stop wasting time figuring out what to eat by feeling like a census taker and automate that process.",
+      "Stop wasting time figuring out what to eat by feeling like a census taker and automate the voting process.",
   };
 };
 
