@@ -200,6 +200,11 @@ function Document({
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {title ? <title>{title}</title> : null}
         <Meta />
+        <script
+          defer
+          data-domain="mealection.com"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
         <Links />
       </head>
       <body>
