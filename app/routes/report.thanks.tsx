@@ -10,9 +10,8 @@ type IndexData = {
 // https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
   return {
-    title: "Thanks",
-    description:
-      "Thank you for signing up for the Mealection release announcements.",
+    title: "Reported! Thanks!",
+    description: "The user has been reported. We will review the case shortly.",
   };
 };
 
@@ -35,8 +34,8 @@ export default function Index() {
                 Thank You!!!
               </h1>
               <p className="mb-8 leading-relaxed">
-                We will let you know when things are ready to test. We might
-                also request some feedback for pricing.
+                We are sorry you had to deal with what you reported. We will be
+                looking into the matter shortly.
               </p>
             </div>
           </div>
