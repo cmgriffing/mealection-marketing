@@ -1,0 +1,68 @@
+.table-cell-status {
+  min-width: 11rem;
+  width: 9rem;
+}
+
+.table-cell-created {
+  min-width: 9rem;
+  width: 6rem;
+}
+
+.table-cell-report-type {
+  min-width: 10rem;
+  width: 8rem;
+}
+
+.filters-wrapper {
+  height: 0;
+  transition: height 0.3s;
+  overflow: hidden;
+}
+
+.filters-button .chevron-up {
+  display: none;
+}
+
+.filters-button .chevron-down {
+  display: inline;
+}
+
+.filters-toggle:checked ~ .filters-wrapper {
+  height: 14rem;
+}
+
+.has-js .filters-toggle:checked ~ .filters-wrapper {
+  height: 11rem;
+}
+
+.filters-toggle:checked ~ .filters-button .chevron-up {
+  display: inline;
+}
+
+.filters-toggle:checked ~ .filters-button .chevron-down {
+  display: none;
+}
+
+.report-type-tag {
+  text-align: center;
+  width: 6rem;
+  justify-content: center;
+}
+
+.mobile-report-type-tag {
+  margin-left: 0.5rem;
+  width: 5rem;
+  justify-content: center;
+}
+
+.hover-table-row {
+  transition: transform 0.1s;
+  filter: none;
+  cursor: pointer;
+}
+
+.hover-table-row:hover {
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  transform: scale(1.03);
+}

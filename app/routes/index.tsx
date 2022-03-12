@@ -9,6 +9,7 @@ import { Form, json } from "remix";
 import { validator } from "./validate.server";
 import heroImage from "../../images/hero.jpg";
 import { useEffect, useState } from "react";
+import { Ellipsis } from "~/components/Ellipsis";
 
 function promisifiedTimeout(duration: number) {
   return new Promise((resolve, reject) => {
@@ -16,17 +17,6 @@ function promisifiedTimeout(duration: number) {
       resolve("Done");
     }, duration);
   });
-}
-
-function Ellipsis() {
-  return (
-    <div className="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
 }
 
 export let action: ActionFunction = async ({ request }) => {
@@ -105,7 +95,7 @@ export default function Index() {
   }, [actionData]);
 
   return (
-    <div className="remix__page">
+    <div className="container remix__page">
       <main>
         <section className="text-gray-600 body-font">
           <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">

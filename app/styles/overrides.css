@@ -88,3 +88,15 @@ body {
     transform: translate(9px, 0);
   }
 }
+
+/*
+  Table stuff
+*/
+
+/* .table-header {
+  height: 80px;
+} */
+
+.th-head-label {
+  line-height: 1.8rem;
+}

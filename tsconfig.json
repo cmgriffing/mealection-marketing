@@ -6,6 +6,7 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "target": "ES2019",
     "strict": true,
     "paths": {

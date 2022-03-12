@@ -8,11 +8,25 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useHref,
+  useLocation,
 } from "remix";
 import type { LinksFunction } from "remix";
 
 import overridesUrl from "./styles/overrides.css";
 import tailwindUrl from "./styles/tailwind.css";
+import { createStore, persist, StoreProvider } from "easy-peasy";
+import { AuthStore } from "./stores/auth";
+
+const store = createStore({
+  auth: persist({
+    token: "",
+    user: {
+      name: "",
+    },
+  }),
+  app: {},
+});
 
 // import globalStylesUrl from "~/styles/global.css";
 // import darkStylesUrl from "~/styles/dark.css";
@@ -94,7 +108,7 @@ export let links: LinksFunction = () => {
     },
     {
       rel: "manifest",
-      href: "manifest.json",
+      href: "/manifest.json",
     },
   ];
 };
@@ -218,16 +232,28 @@ function Document({
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  console.log({ location });
+
+  let isAdmin = location.pathname.indexOf("admin") === 0;
+
   return (
-    <div className="remix-app">
-      <div className="remix-app__main">
-        <div className="container remix-app__main-content">{children}</div>
-      </div>
-      <footer className="remix-app__footer">
-        <div className="container remix-app__footer-content text-center">
-          <p>&copy; {new Date().getFullYear()} Mealection</p>
+    <StoreProvider store={AuthStore}>
+      <div className="remix-app min-h-screen flex flex-col flex-grow">
+        <div className="remix-app__main flex flex-col flex-grow">
+          <div className="remix-app__main-content  flex flex-col flex-grow">
+            {children}
+          </div>
         </div>
-      </footer>
-    </div>
+        {isAdmin && (
+          <footer className="remix-app__footer">
+            <div className="container remix-app__footer-content text-center">
+              <p>&copy; {new Date().getFullYear()} Mealection</p>
+            </div>
+          </footer>
+        )}
+      </div>
+    </StoreProvider>
   );
 }
