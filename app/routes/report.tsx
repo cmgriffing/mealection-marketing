@@ -12,13 +12,7 @@ import { Fragment, useEffect, useState } from "react";
 import reportImage from "../../images/scott-graham-OQMZwNd3ThU-unsplash.jpg";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-
-export enum ReportType {
-  Invite = "invite",
-  ProfileImage = "profileImage",
-  MealImage = "mealImage",
-  PollName = "pollName",
-}
+import { ReportType } from "~/utils/types";
 
 const API_URL = "http://localhost:3333";
 // const API_URL = "https://pod53tprag.execute-api.us-west-2.amazonaws.com";

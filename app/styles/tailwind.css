@@ -5039,6 +5039,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   margin: 0px;
 }
 
+.m-8 {
+  margin: 2rem;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -5151,6 +5155,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
 
 .-mt-px {
   margin-top: -1px;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .block {
@@ -5297,6 +5305,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   width: 20rem;
 }
 
+.w-1\/3 {
+  width: 33.333333%;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -5369,10 +5381,6 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
 
 .w-96 {
   width: 24rem;
-}
-
-.w-1\/3 {
-  width: 33.333333%;
 }
 
 .min-w-0 {
@@ -5510,10 +5518,6 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
-.self-start {
-  align-self: flex-start;
 }
 
 .overflow-hidden {
@@ -5993,12 +5997,21 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   line-height: 1rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-medium {
   font-weight: 500;
 }
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .uppercase {

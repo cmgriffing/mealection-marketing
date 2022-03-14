@@ -9,6 +9,7 @@ import {
   Link,
   useSearchParams,
   LinksFunction,
+  useLocation,
 } from "remix";
 import { Form, json } from "remix";
 import heroImage from "../../images/hero.jpg";
@@ -121,7 +122,9 @@ export default function UserReports() {
   const actionData = useActionData();
   const { userReports, filters } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [showingFilters, setShowingFilters] = useState(false);
+  const location = useLocation();
+  console.log({ location });
+  // const [showingFilters, setShowingFilters] = useState(false);
   const [showError, setShowError] = useState(false);
 
   useEffect(() => {
@@ -358,7 +361,11 @@ export default function UserReports() {
                 const TDLink: any = (props: Props<any>) => {
                   return (
                     <Link
-                      to={`/admin/reports/${userReport.reportId}`}
+                      to={`/admin/reports/${
+                        userReport.reportId
+                      }?previousRoute=${encodeURIComponent(
+                        location.pathname + location.search
+                      )}`}
                       {...props}
                       className={`${
                         props.className || ""
@@ -381,10 +388,17 @@ export default function UserReports() {
                           size="xl"
                           className="cursor-pointer"
                           color={
-                            userReport.status == ReportStatus.Resolved
-                              ? "gray"
-                              : "tertiary"
+                            userReport.status === ReportStatus.Resolved
+                              ? "success"
+                              : "error"
                           }
+                          style={{
+                            textTransform: "capitalize",
+                            opacity:
+                              userReport.status === ReportStatus.Resolved
+                                ? 0.42
+                                : 1,
+                          }}
                         >
                           {userReport.status}
                         </Tag>
@@ -453,6 +467,12 @@ export default function UserReports() {
             </li>
           ))}
         </ol>
+
+        {!userReports?.length && (
+          <div className="text-center p-8">
+            <h2 className="text-2xl">No Reports found.</h2>
+          </div>
+        )}
       </AdminPage>
     </div>
   );
