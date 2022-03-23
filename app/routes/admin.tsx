@@ -46,7 +46,6 @@ export default function Admin({ children }: { children: React.ReactNode }) {
   const transition = useTransition();
   const actionData = useActionData();
   const user = useLoaderData();
-  console.log({ userInAdmin: user });
   const [hasJs, setHasJs] = useState(false);
   const [showingSidebar, setShowingSidebar] = useState(false);
   const [showingLoader, setShowingLoader] = useState(false);

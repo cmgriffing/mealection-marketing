@@ -234,8 +234,6 @@ function Document({
 function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
-  console.log({ location });
-
   let isAdmin = location.pathname.indexOf("admin") === 0;
 
   return (

@@ -52,8 +52,6 @@ export let loader: LoaderFunction = async ({ request }) => {
     axios.get("/reports/graphs/users"),
     request,
     async function (request, response) {
-      console.log("response", response.data);
-
       const [{ userReports }, bugReports] = (
         await Promise.all([response, getLastWeeksReports(getBugReports)])
       ).map((mappedResponse) => mappedResponse.data);
@@ -69,7 +67,6 @@ export let loader: LoaderFunction = async ({ request }) => {
 // https://remix.run/guides/routing#index-routes
 export default function Index() {
   const { userReports, bugReports, user } = useLoaderData();
-  console.log({ user });
   const groupedUserReports: any = {};
   userReports.forEach(
     (reportData: any) => (groupedUserReports[reportData.date] = reportData)

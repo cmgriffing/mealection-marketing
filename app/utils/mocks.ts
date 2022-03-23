@@ -15,7 +15,6 @@ export async function getUserReports() {
         now
           .subtract(rand([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]), "day")
           .unix() * 1000;
-      // console.log({ timestamp });
       return {
         reportId: nanoid(),
         status:
@@ -46,8 +45,6 @@ export async function getLastWeeksReports(getReports: Function) {
   let runningTotal = previousTotalReports.length;
   let runningResolved = previousResolvedReports.length;
 
-  console.log({ runningTotal, runningResolved });
-
   const groupedResults: any = {};
   reports.forEach((report: any) => {
     const date = dayjs(report.timestamp).format("MM/DD");
@@ -61,7 +58,6 @@ export async function getLastWeeksReports(getReports: Function) {
     data: [7, 6, 5, 4, 3, 2, 1]
       .map((daysAgo) => now.subtract(daysAgo, "days").format("MM/DD"))
       .map((date) => {
-        // console.log({ groupedResults });
         if (!groupedResults[date]) {
           groupedResults[date] = [];
         }

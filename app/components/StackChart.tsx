@@ -95,7 +95,6 @@ export function StackChart({
           <VictoryVoronoiContainer
             onActivated={(points) => {
               setActiveX(points[0]._x);
-              console.log({ points });
               setCurrentSection({
                 key: points[0].x,
                 group: keyedDataset[points[0].x],

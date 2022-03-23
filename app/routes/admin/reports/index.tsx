@@ -79,8 +79,6 @@ export let loader: LoaderFunction = async (foo) => {
     ...searchParams,
   };
 
-  console.log({ filters });
-
   const axios = await axiosLoader({ request });
 
   return redirectIfNeeded(
@@ -123,7 +121,6 @@ export default function UserReports() {
   const { userReports, filters } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  console.log({ location });
   // const [showingFilters, setShowingFilters] = useState(false);
   const [showError, setShowError] = useState(false);
 
@@ -153,8 +150,6 @@ export default function UserReports() {
       } else {
         delete newFilters[newParam];
       }
-
-      console.log({ newFilters });
 
       submitSearchParams(newFilters);
     };
@@ -386,14 +381,13 @@ export default function UserReports() {
                         <Tag
                           variant="solid"
                           size="xl"
-                          className="cursor-pointer"
+                          className="cursor-pointer capitalize"
                           color={
                             userReport.status === ReportStatus.Resolved
                               ? "success"
                               : "error"
                           }
                           style={{
-                            textTransform: "capitalize",
                             opacity:
                               userReport.status === ReportStatus.Resolved
                                 ? 0.42

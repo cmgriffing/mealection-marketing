@@ -7,9 +7,15 @@ import { FormStrategy } from "remix-auth-form";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+interface AuthenticatedUser extends User {
+  accessToken: string;
+}
+
 // Create an instance of the authenticator, pass a generic with what
 // strategies will return and will store in the session
-export const authenticator = new Authenticator<User>(sessionStorage);
+export const authenticator = new Authenticator<Partial<AuthenticatedUser>>(
+  sessionStorage
+);
 
 // Tell the Authenticator to use the form strategy
 authenticator.use(
@@ -24,19 +30,21 @@ authenticator.use(
       { email, password }
     );
 
-    const { accessToken } = loginResponse.data as {
+    const { accessToken, user } = loginResponse.data as {
       accessToken: string;
       refreshToken: string;
+      user: User;
     };
+    console.log({ accessToken, user });
 
     const decodedToken = jwt_decode(accessToken) as any;
 
-    console.log({ decodedToken });
+    console.log({ decodedToken, user });
 
     return {
-      userId: decodedToken?.sub || "",
+      userId: decodedToken?.sub?.userId || "",
       email,
-      role: UserRole.Standard,
+      role: user.role,
       accessToken,
     };
   }),

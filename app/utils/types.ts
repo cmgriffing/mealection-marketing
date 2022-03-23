@@ -233,3 +233,20 @@ export interface MealImageReport extends BaseReport {
 }
 
 export type UserReport = ProfileImageReport | PollNameReport | MealImageReport;
+
+export enum BanReason {
+  InappropriateImages = "inappropriateImages",
+  InappropriateNames = "inappropriateNames",
+  Spam = "spam",
+}
+
+export interface Ban extends DatastoreRecord {
+  banId: string;
+  userId: string;
+  issuerId: string;
+  banned: boolean;
+  banReason?: BanReason;
+  banDetails?: string;
+  unbanRequestReason?: string;
+  unbanRequestToken?: string;
+}

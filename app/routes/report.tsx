@@ -26,15 +26,6 @@ export let loader: LoaderFunction = ({ request }) => {
   const reportType = url.searchParams.get("reportType");
   const teamId = url.searchParams.get("teamId");
 
-  console.log("loading", {
-    userId,
-    inviteToken,
-    reporterUserId,
-    reportType,
-    teamId,
-    error,
-  });
-
   return {
     userId,
     inviteToken,
@@ -105,8 +96,6 @@ export let action: ActionFunction = async ({ request }) => {
     }),
   });
 
-  console.log("response status", reportResponse.status);
-
   if (reportResponse.status !== 204) {
     // return json(
     //   {
@@ -124,12 +113,8 @@ export let action: ActionFunction = async ({ request }) => {
       teamId,
     }).toString();
 
-    console.log("url: ", `/report?${urlSearchParams}`);
-
     return redirect(`/report?${urlSearchParams}`);
   }
-
-  console.log("Success!!");
 
   return redirect("/report/thanks");
 };
@@ -201,7 +186,6 @@ export default function Index() {
                           items={reasons}
                           selectedItem={selectedReason}
                           onSelectChange={(reason) => {
-                            console.log({ reason });
                             setSelectedReason(reason);
                           }}
                         />
@@ -312,15 +296,6 @@ function isValid({
   teamId?: string;
   inviteToken?: string;
 }) {
-  console.log(isValid, {
-    extraDetails,
-    reportType,
-    userId,
-    reporterUserId,
-    inviteToken,
-    teamId,
-  });
-
   if (!reportType) {
     return false;
   }

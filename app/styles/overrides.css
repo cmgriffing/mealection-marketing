@@ -100,3 +100,51 @@ body {
 .th-head-label {
   line-height: 1.8rem;
 }
+
+.floating-link {
+  transition: transform 0.1s;
+  filter: none;
+  cursor: pointer;
+}
+
+.floating-link:hover {
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  transform: scale(1.03);
+}
+
+.custom-details > summary {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.custom-details > summary::before {
+  position: absolute;
+  left: 0.5rem;
+  font-weight: bold;
+  transition: transform 0.2s;
+  /* just fun */
+  /* transition: transform 3s; */
+  content: "▹";
+}
+
+.custom-details[open] > summary::before {
+  transform: rotate(90deg);
+  /* just fun */
+  /* transform: rotate(1890deg) translateY(182px) translateX(5px);
+  transform-origin: 100px 100px; */
+}
+
+.custom-details li:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.placeholder {
+  overflow: hidden;
+}
+
+.placeholder svg {
+  max-width: 100%;
+  height: auto;
+}

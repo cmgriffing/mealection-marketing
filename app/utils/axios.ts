@@ -11,7 +11,6 @@ export function unauthenticatedAxios(baseURL: string) {
 
 // only to be called from loader functions
 export function authenticatedAxios(baseURL: string, token: string) {
-  console.log({ token });
   const instance = Axios.create({
     baseURL,
     headers: {

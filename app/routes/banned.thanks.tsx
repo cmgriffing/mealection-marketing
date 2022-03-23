@@ -11,8 +11,7 @@ type IndexData = {
 export let meta: MetaFunction = () => {
   return {
     title: "Thanks",
-    description:
-      "Thank you for signing up for the Mealection release announcements.",
+    description: "We will review your unban request as soon as possible.",
   };
 };
 
@@ -32,11 +31,10 @@ export default function Index() {
             />
             <div className="hero-content text-center lg:w-2/6 md:w-3/6 w-5/6">
               <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                Thank You!!!
+                Thank You
               </h1>
               <p className="mb-8 leading-relaxed">
-                We will let you know when things are ready to test. We might
-                also request some feedback for pricing.
+                We will review your unban request as soon as possible.
               </p>
             </div>
           </div>
