@@ -17,7 +17,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { axiosLoader } from "~/utils/loaders/axios";
 import { redirectIfNeeded } from "~/utils/redirectIfNeeded";
 import { getLastWeeksReports, getBugReports } from "~/utils/mocks";
-import { ReportStatus, ReportType, UserReport } from "~/utils/types";
+import { ReportStatus, ReportType, UserReport } from "grumblr-types";
 import { Button, Select, Tag } from "@vechaiui/react";
 // import dayjs = require("dayjs");
 import Case from "case";

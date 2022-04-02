@@ -22,7 +22,7 @@ import {
   VictoryVoronoiContainer,
 } from "victory";
 import { ReportType } from "../report";
-import { ReportStatus, UserReport } from "~/utils/types";
+import { ReportStatus, UserReport } from "grumblr-types";
 import dayjs from "dayjs";
 import { colors } from "../../../config/colors";
 import { StackChart } from "~/components/StackChart";

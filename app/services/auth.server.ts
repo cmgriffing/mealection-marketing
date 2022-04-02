@@ -2,7 +2,7 @@ import { UserRole } from "./../utils/types";
 // app/services/auth.server.ts
 import { Authenticator } from "remix-auth";
 import { sessionStorage } from "~/services/session.server";
-import { User } from "~/utils/types";
+import { User } from "grumblr-types";
 import { FormStrategy } from "remix-auth-form";
 import axios from "axios";
 import jwt_decode from "jwt-decode";

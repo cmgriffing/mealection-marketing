@@ -21,7 +21,7 @@ import {
   ReportType,
   ReportVerdict,
   UserReport,
-} from "~/utils/types";
+} from "grumblr-types";
 import { Button, Tag } from "@vechaiui/react";
 import { colorPaletteFromId } from "~/utils/color-palette-from-id";
 import { colors } from "../../../../config/colors";
@@ -251,7 +251,7 @@ export default function Id() {
                   />
                 )}
               {report.status !== ReportStatus.Resolved && (
-                <p className="m-8">Is this image offensive?</p>
+                <p className="m-8 text-4xl">Is this image offensive?</p>
               )}
             </div>
           )}
@@ -260,13 +260,13 @@ export default function Id() {
             report.status === ReportStatus.Reported && (
               <div className="flex flex-col text-center text-4xl p-8">
                 Poll Name: {extraData?.poll?.name}
-                <p className="m-8">Is this poll name offensive?</p>
+                <p className="m-8 text-4xl">Is this poll name offensive?</p>
               </div>
             )}
           {report.reportType === ReportType.PollName &&
             report.status === ReportStatus.Resolved && (
               <div className="flex flex-col text-center text-4xl p-8">
-                Poll Name: {report.reportMeta.originalName}
+                Poll Name: {report?.reportMeta?.originalName}
               </div>
             )}
 
@@ -274,13 +274,13 @@ export default function Id() {
             report.status === ReportStatus.Reported && (
               <div className="flex flex-col text-center text-4xl p-8">
                 Meal Name: {extraData?.meal?.name}
-                <p className="m-8">Is this meal name offensive?</p>
+                <p className="m-8 text-4xl">Is this meal name offensive?</p>
               </div>
             )}
           {report.reportType === ReportType.MealName &&
             report.status === ReportStatus.Resolved && (
               <div className="flex flex-col text-center text-4xl p-8">
-                Meal Name: {report.reportMeta.originalName}
+                Meal Name: {report?.reportMeta?.originalName}
               </div>
             )}
         </div>

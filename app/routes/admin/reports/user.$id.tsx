@@ -13,7 +13,7 @@ import {
   Restaurant,
   User,
   UserReport,
-} from "~/utils/types";
+} from "grumblr-types";
 import { PageContainer } from "~/components/PageContainer";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
