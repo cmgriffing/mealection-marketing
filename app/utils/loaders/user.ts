@@ -7,7 +7,5 @@ export async function userLoader({ request }: DataFunctionArgs) {
     failureRedirect: "/admin/login",
   });
 
-  console.log("user in user loader", user);
-
   return user;
 }

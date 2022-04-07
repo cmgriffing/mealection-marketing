@@ -17,6 +17,8 @@ import overridesUrl from "./styles/overrides.css";
 import tailwindUrl from "./styles/tailwind.css";
 import { createStore, persist, StoreProvider } from "easy-peasy";
 import { AuthStore } from "./stores/auth";
+import Bevan from "@fontsource/bevan";
+import Nunito from "@fontsource/nunito";
 
 const store = createStore({
   auth: persist({

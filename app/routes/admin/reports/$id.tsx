@@ -59,6 +59,7 @@ export let loader: LoaderFunction = async (loaderContext) => {
       );
 
       const userScore = userScoreResponse.data.score;
+      console.log({ userScore });
 
       if (report.reportType === ReportType.ProfileImage) {
         const presignedUrlResponse = await axios.post(`/admin/image`, {
