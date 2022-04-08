@@ -5246,8 +5246,12 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   height: auto;
 }
 
-.h-40 {
-  height: 10rem;
+.h-\[26px\] {
+  height: 26px;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .h-20 {
@@ -5256,6 +5260,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .h-6 {
@@ -5306,8 +5314,8 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   height: 0.875rem;
 }
 
-.h-80 {
-  height: 20rem;
+.h-\[42px\] {
+  height: 42px;
 }
 
 .max-h-\[600px\] {
@@ -5450,6 +5458,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-\[120px\] {
+  width: 120px;
 }
 
 .min-w-0 {
@@ -6143,14 +6155,14 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   line-height: 1.75rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-medium {

@@ -75,9 +75,90 @@ const features = [
   },
 ];
 
+function promisifiedTimeout(duration: number) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Done");
+    }, duration);
+  });
+}
+
+export let action: ActionFunction = async ({ request }) => {
+  let formData = await request.formData();
+  let email = formData.get("email");
+
+  await promisifiedTimeout(1000);
+
+  if (typeof email !== "string" || email === "") {
+    return json(
+      {
+        message: "Email must not be blank.",
+      },
+      { status: 400 }
+    );
+  }
+
+  const emailValidation = await validator({
+    email,
+    validateRegex: true,
+    validateMx: true,
+    validateTypo: false,
+    validateDisposable: false,
+    validateSMTP: false,
+  });
+
+  console.log({ emailValidation });
+
+  if (!emailValidation.valid) {
+    return json(
+      {
+        message: "Email does not appear to be valid",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  // send email to mailchimp or whoever we decided
+  const result = await fetch("https://api.sendgrid.com/v3/marketing/contacts", {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${process.env.SENDGRID_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      list_ids: ["628798d6-4c3f-40f2-8d1e-ddadfad4d4cf"],
+      contacts: [
+        {
+          email,
+        },
+      ],
+    }),
+  });
+
+  if (!result.ok) {
+    return json(
+      {
+        message: "Error adding contact to list",
+      },
+      { status: 500 }
+    );
+  }
+
+  return redirect("/thanks");
+};
+
 // https://remix.run/guides/routing#index-routes
 export default function Index() {
   const transition = useTransition();
+  const actionData = useActionData();
+
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    setShowError(!!actionData);
+  }, [actionData]);
 
   const windowHeight = useWindowHeight();
   const scrollPosition = useWindowScroll();
@@ -128,27 +209,52 @@ export default function Index() {
                   eat with your whole family getting a voice.
                 </p>
                 <div className="flex w-full md:justify-start justify-center items-end">
-                  <div className="relative mr-4 lg:w-full xl:w-1/2 w-full">
-                    <label
-                      htmlFor="hero-field"
-                      className="leading-7 text-sm text-gray-600"
+                  <Form
+                    method="post"
+                    className="remix__form flex w-full md:justify-start justify-center items-end"
+                  >
+                    <div className="relative mr-4 lg:w-full xl:w-1/2 w-full">
+                      <fieldset
+                        className="w-full"
+                        disabled={transition.state === "submitting"}
+                      >
+                        <label
+                          htmlFor="email"
+                          className="leading-7 text-sm text-gray-600"
+                        >
+                          Email
+                        </label>
+                        <input
+                          type="text"
+                          id="email"
+                          name="email"
+                          className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        />
+                      </fieldset>
+                    </div>
+                    <button
+                      className="inline-flex whitespace-nowrap text-white bg-primary-500 border-0 py-2 px-6 focus:outline-none hover:bg-primary-600 rounded text-lg h-[42px] justify-center w-[120px]"
+                      disabled={transition.state === "submitting"}
                     >
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      id="hero-field"
-                      name="hero-field"
-                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                  </div>
-                  <button className="inline-flex whitespace-nowrap text-white bg-primary-500 border-0 py-2 px-6 focus:outline-none hover:bg-primary-600 rounded text-lg">
-                    Sign-up
-                  </button>
+                      {transition.state !== "submitting" && "Sign-up"}
+                      {transition.state === "submitting" && (
+                        <div className="h-[26px]">
+                          <Ellipsis />
+                        </div>
+                      )}
+                    </button>
+                  </Form>
                 </div>
-                <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
-                  Email will be used for news and updates about Mealection
-                </p>
+                {showError && (
+                  <p className="text-sm mt-2 text-red-500 mb-8 w-full">
+                    {actionData.message}
+                  </p>
+                )}
+                {!showError && (
+                  <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
+                    Email will be used for news and updates about Mealection
+                  </p>
+                )}
                 {ENABLE_APP_LINKS && <AppStoreButtons />}
               </div>
             </div>
