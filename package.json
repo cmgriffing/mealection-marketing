@@ -14,7 +14,7 @@
     "dev": "npm-run-all -p tailwind:dev remix:dev",
     "prebuild": "npm run get-types:copy",
     "build": "npm-run-all -s tailwind:build remix:build",
-    "postinstall": "remix setup node && yarn run get-types"
+    "postinstall": "remix setup node"
   },
   "dependencies": {
     "@fontsource/bevan": "^4.5.7",
