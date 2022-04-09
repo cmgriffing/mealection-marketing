@@ -5246,6 +5246,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   height: auto;
 }
 
+.h-\[42px\] {
+  height: 42px;
+}
+
 .h-\[26px\] {
   height: 26px;
 }
@@ -5314,10 +5318,6 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   height: 0.875rem;
 }
 
-.h-\[42px\] {
-  height: 42px;
-}
-
 .max-h-\[600px\] {
   max-height: 600px;
 }
@@ -5364,6 +5364,10 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
 
 .w-auto {
   width: auto;
+}
+
+.w-\[120px\] {
+  width: 120px;
 }
 
 .w-80 {
@@ -5458,10 +5462,6 @@ input[type=checkbox]:checked:hover:not(:disabled) + .form-switch, input[type=che
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-\[120px\] {
-  width: 120px;
 }
 
 .min-w-0 {

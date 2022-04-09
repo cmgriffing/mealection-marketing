@@ -4,12 +4,17 @@
   "description": "",
   "license": "MIT",
   "scripts": {
+    "get-types:clone": "rm -rf grumblr-types && git clone https://github.com/cmgriffing/grumblr-types.git && rm -rf ./grumblr-types/.git",
+    "get-types:copy": "cp -R ./grumblr-types ./node_modules/grumblr-types",
+    "get-types": "npm-run-all -s get-types:clone get-types:copy",
     "tailwind:dev": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --watch",
     "tailwind:build": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --minify",
     "remix:dev": "node -r dotenv/config node_modules/.bin/remix dev",
     "remix:build": "remix build",
     "dev": "npm-run-all -p tailwind:dev remix:dev",
+    "prebuild": "npm run get-types:copy",
     "build": "npm-run-all -s tailwind:build remix:build",
+    "foo": "run-s ",
     "postinstall": "remix setup node"
   },
   "dependencies": {
@@ -32,7 +37,6 @@
     "deep-email-validator": "^0.1.18",
     "dotenv": "^10.0.0",
     "easy-peasy": "^5.0.4",
-    "grumblr-types": "https://github.com/cmgriffing/grumblr-types.git#semver:^0.0.20",
     "jwt-decode": "^3.1.2",
     "nice-color-palettes": "^3.0.0",
     "react": "^17.0.2",

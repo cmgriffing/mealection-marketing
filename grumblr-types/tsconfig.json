@@ -1,0 +1,9 @@
+{
+  "strict": true,
+  "compilerOptions": {
+    "declarationMap": true,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

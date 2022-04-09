@@ -1,0 +1,28 @@
+{
+  "name": "grumblr-types",
+  "version": "0.0.30",
+  "description": "",
+  "main": "dist/index.js",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push origin main --follow-tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmgriffing/grumblr-types.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmgriffing/grumblr-types/issues"
+  },
+  "homepage": "https://github.com/cmgriffing/grumblr-types#readme",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "typescript": "^4.6.2"
+  }
+}
