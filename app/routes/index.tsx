@@ -376,6 +376,7 @@ export default function Index() {
         {!ENABLE_APP_LINKS && (
           <section className="py-6 bg-primary-400 text-center">
             <h3 className="text-4xl font-bold">Testimonials</h3>
+            <p>(mock placeholders for now)</p>
           </section>
         )}
 
