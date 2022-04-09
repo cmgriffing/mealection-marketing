@@ -34,6 +34,8 @@ import { useWindowHeight } from "@react-hook/window-size";
 import useWindowScroll from "@react-hook/window-scroll";
 import { ENABLE_APP_LINKS } from "~/utils/constants";
 
+const isIos = require("is-ios");
+
 const overlayBackgroundColor = new Color(colors.primary[200])
   .fade(0.05)
   .rgb()
@@ -149,6 +151,11 @@ export let action: ActionFunction = async ({ request }) => {
   return redirect("/thanks");
 };
 
+interface ScrollStyles {
+  backgroundPositionX?: number;
+  transition?: string;
+}
+
 // https://remix.run/guides/routing#index-routes
 export default function Index() {
   const transition = useTransition();
@@ -162,6 +169,19 @@ export default function Index() {
 
   const windowHeight = useWindowHeight();
   const scrollPosition = useWindowScroll();
+
+  const firstBannerStyles: ScrollStyles = {};
+  const secondBannerStyles: ScrollStyles = {};
+
+  if (!isIos && scrollPosition && windowHeight) {
+    firstBannerStyles.backgroundPositionX =
+      60 * (scrollPosition / windowHeight);
+    firstBannerStyles.transition = "background-position 100ms";
+
+    secondBannerStyles.backgroundPositionX =
+      -60 * (scrollPosition / windowHeight) + 200;
+    secondBannerStyles.transition = "background-position 100ms";
+  }
 
   return (
     <div className="remix__page overflow-hidden">
@@ -292,8 +312,7 @@ export default function Index() {
             style={{
               transform: "rotate(12deg) scale(1.2)",
               backgroundImage: `url(${banner2Image})`,
-              backgroundPositionX: 60 * (scrollPosition / windowHeight),
-              transition: "background-position 100ms",
+              ...firstBannerStyles,
             }}
           ></div>
         </section>
@@ -339,8 +358,7 @@ export default function Index() {
             style={{
               transform: "rotate(-12deg) scale(1.2)",
               backgroundImage: `url(${banner4Image})`,
-              transition: "background-position 100ms",
-              backgroundPositionX: -60 * (scrollPosition / windowHeight) + 200,
+              ...secondBannerStyles,
             }}
           ></div>
         </section>
