@@ -17,8 +17,6 @@ import overridesUrl from "./styles/overrides.css";
 import tailwindUrl from "./styles/tailwind.css";
 import { createStore, persist, StoreProvider } from "easy-peasy";
 import { AuthStore } from "./stores/auth";
-import Bevan from "@fontsource/bevan";
-import Nunito from "@fontsource/nunito";
 
 const store = createStore({
   auth: persist({
@@ -30,14 +28,13 @@ const store = createStore({
   app: {},
 });
 
-// import globalStylesUrl from "~/styles/global.css";
-// import darkStylesUrl from "~/styles/dark.css";
-
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: tailwindUrl },
     { rel: "stylesheet", href: overridesUrl },
+    { rel: "stylesheet", href: "/fontsource/nunito/index.css" },
+    { rel: "stylesheet", href: "/fontsource/bevan/index.css" },
     {
       rel: "apple-touch-icon",
       sizes: "57x57",
