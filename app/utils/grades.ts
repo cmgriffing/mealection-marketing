@@ -1,4 +1,4 @@
-import { colors } from "../../config/colors";
+import { colors } from "~/config/colors";
 
 export enum LetterGrade {
   A = "A",

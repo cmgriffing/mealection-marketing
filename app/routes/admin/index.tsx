@@ -24,7 +24,7 @@ import {
 import { ReportType } from "../report";
 import { ReportStatus, UserReport } from "grumblr-types";
 import dayjs from "dayjs";
-import { colors } from "../../../config/colors";
+import { colors } from "~/config/colors";
 import { StackChart } from "~/components/StackChart";
 
 import { Icon } from "@iconify/react";
@@ -106,7 +106,7 @@ export default function Index() {
   });
 
   return (
-    <div className="relative py-4 px-8 z-0">
+    <div className="relative z-0 py-4 px-8">
       <PageTitle>Dashboard</PageTitle>
       <div className="flex flex-row flex-wrap items-center justify-center">
         <Cell label="User Reports" icon={userVoice}>
@@ -130,8 +130,8 @@ export default function Index() {
 
 function Cell({ label, icon, children }: any) {
   return (
-    <div className="w-80 p-0 border border-primary-600 m-4">
-      <header className="w-full bg-primary-500 px-4 py-2 m-0 flex flex-row items-center">
+    <div className="border-primary-600 m-4 w-80 border p-0">
+      <header className="bg-primary-500 m-0 flex w-full flex-row items-center px-4 py-2">
         <span className="mr-2 w-4">
           <Icon icon={icon} />
         </span>

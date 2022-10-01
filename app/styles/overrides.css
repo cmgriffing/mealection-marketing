@@ -165,3 +165,7 @@ body {
   max-width: 100%;
   height: auto;
 }
+
+.main-header h1 {
+  --tw-border-opacity: 1;
+}

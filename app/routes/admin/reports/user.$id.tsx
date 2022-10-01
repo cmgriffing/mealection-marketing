@@ -20,7 +20,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { gradeColorMap, scoreToGrade } from "~/utils/grades";
 dayjs.extend(relativeTime);
 import Color from "color";
-import { colors } from "../../../../config/colors";
+import { colors } from "../../../config/colors";
 import { Button, Tag } from "@vechaiui/react";
 import Case from "case";
 import { presignedUrlLoader } from "~/utils/loaders/presigned-url";
@@ -117,17 +117,17 @@ export default function Index() {
     <AdminPage>
       <PageContainer>
         <div className="flex flex-row flex-wrap">
-          <div className="left-column w-full md:w-1/3 text-center p-2">
-            <div className="relative inline-block mb-8">
+          <div className="left-column w-full p-2 text-center md:w-1/3">
+            <div className="relative mb-8 inline-block">
               <SmartImage
                 presignedUrl={presignedUrl}
                 placeholderKey={user.userId}
                 placeholderType="beam"
-                className="m-auto rounded w-40"
+                className="m-auto w-40 rounded"
               />
 
               <div
-                className="absolute w-16 h-16 flex items-center justify-center rounded-full text-4xl font-bold m-auto"
+                className="absolute m-auto flex h-16 w-16 items-center justify-center rounded-full text-4xl font-bold"
                 style={{
                   backgroundColor: gradeColor,
                   color: Color(gradeColor).isDark() ? "white" : "black",
@@ -139,10 +139,10 @@ export default function Index() {
               </div>
             </div>
             <div>
-              <div className="text-center w-36 mx-auto">
+              <div className="mx-auto w-36 text-center">
                 <div className="text-left">
                   Joined:
-                  <span className="font-bold ml-2">
+                  <span className="ml-2 font-bold">
                     {dayjs(user.createdAt).format("MM/DD/YYYY")}
                   </span>
                 </div>
@@ -172,10 +172,10 @@ export default function Index() {
               )}
               {!!bans.length && (
                 <>
-                  <h3 className="text-left font-bold p-2">Bans</h3>
+                  <h3 className="p-2 text-left font-bold">Bans</h3>
                   <ol className="w-full">
                     {bans.map((ban) => (
-                      <li className="flex flex-row w-full px-4 py-2">
+                      <li className="flex w-full flex-row px-4 py-2">
                         <span>{dayjs(ban.createdAt).from(dayjs())}</span>
                         <span className="flex flex-grow"></span>
                         <span
@@ -192,24 +192,24 @@ export default function Index() {
               )}
             </div>
           </div>
-          <div className="right-column  w-full md:w-2/3 flex flex-col flex-grow p-2">
+          <div className="right-column  flex w-full flex-grow flex-col p-2 md:w-2/3">
             <h1 className="text-md">
-              Name: <span className="font-bold text-2xl">{user.name}</span>
+              Name: <span className="text-2xl font-bold">{user.name}</span>
             </h1>
             <h2 className="text-md">
-              User ID: <span className="font-bold text-xl">{user.userId}</span>
+              User ID: <span className="text-xl font-bold">{user.userId}</span>
             </h2>
             {bans
               .filter((ban) => ban.banned && ban.unbanRequestReason)
               .map((ban) => (
                 <Form className="p-2" method="post">
                   <input type="hidden" name="banId" value={ban.banId} />
-                  <div className="p-2 bg-error-600 rounded">
+                  <div className="bg-error-600 rounded p-2">
                     <h3 className="text-white">Unban Request:</h3>
-                    <div className="p-4 bg-gray-100 italic text-gray-900">
+                    <div className="bg-gray-100 p-4 italic text-gray-900">
                       {ban.unbanRequestReason}
                     </div>
-                    <div className="flex flex-row justify-end mt-2">
+                    <div className="mt-2 flex flex-row justify-end">
                       <Button variant="solid">Remove Ban</Button>
                     </div>
                   </div>
@@ -232,19 +232,19 @@ export default function Index() {
 
                 return (
                   <>
-                    <td className="pl-4 p-2 text-center">
+                    <td className="p-2 pl-4 text-center">
                       <Tag
                         size="xl"
                         color="primary"
                         variant="solid"
-                        className="report-type-tag cursor-pointer text-center w-full items-center justify-center"
+                        className="report-type-tag w-full cursor-pointer items-center justify-center text-center"
                       >
                         {Case.title(item.reportType).replace("Image", "📷")}
                       </Tag>
                     </td>
                     <td className="p-2 text-center">
                       <Tag color={color} variant="solid" className="">
-                        <span className="capitalize w-20">{item.status}</span>
+                        <span className="w-20 capitalize">{item.status}</span>
 
                         {item.reportVerdict === ReportVerdict.Dismissed && (
                           <span>✓</span>
@@ -255,7 +255,7 @@ export default function Index() {
                         )}
                       </Tag>
                     </td>
-                    <td className="pr-4 p-2 text-right">
+                    <td className="p-2 pr-4 text-right">
                       {dayjs().to(item.createdAt)}
                     </td>
                   </>
@@ -268,9 +268,9 @@ export default function Index() {
               items={polls}
               itemContent={(item: any) => (
                 <>
-                  <td className="pl-4 p-2">{item.name}</td>
+                  <td className="p-2 pl-4">{item.name}</td>
                   <td className="flex flex-grow"></td>
-                  <td className="pr-4 p-2 text-right">
+                  <td className="p-2 pr-4 text-right">
                     {dayjs().to(item.createdAt)}
                   </td>
                 </>
@@ -282,9 +282,9 @@ export default function Index() {
               items={meals}
               itemContent={(item: any) => (
                 <>
-                  <td className="pl-4 p-2">{item.name}</td>
+                  <td className="p-2 pl-4">{item.name}</td>
                   <td className="flex flex-grow"></td>
-                  <td className="pr-4 p-2 text-right">
+                  <td className="p-2 pr-4 text-right">
                     {dayjs().to(item.createdAt)}
                   </td>
                 </>
@@ -296,9 +296,9 @@ export default function Index() {
               items={restaurants}
               itemContent={(item: any) => (
                 <>
-                  <td className="pl-4 p-2">{item.name}</td>
+                  <td className="p-2 pl-4">{item.name}</td>
                   <td className="flex flex-grow"></td>
-                  <td className="pr-4 p-2 text-right">
+                  <td className="p-2 pr-4 text-right">
                     {dayjs().to(item.createdAt)}
                   </td>
                 </>
@@ -313,11 +313,11 @@ export default function Index() {
 
 function CustomDetails({ label, items, itemContent }: any) {
   return (
-    <details className="custom-details m-2 bg-primary-300 rounded border border-primary-300">
+    <details className="custom-details bg-primary-300 border-primary-300 m-2 rounded border">
       <summary className="flex flex-row items-center p-2">
         <div className="pl-2">{label}</div>
         <div className="flex flex-grow"></div>
-        <div className="bg-white font-bold w-8 h-8 flex items-center justify-center rounded-full">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white font-bold">
           {items.length}
         </div>
       </summary>

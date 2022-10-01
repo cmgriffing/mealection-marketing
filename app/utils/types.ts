@@ -1,3 +1,4 @@
+import { Component, ComponentType } from "react";
 import {
   HTTPClientErrorResponses,
   HTTPServerErrorResponses,
@@ -250,3 +251,21 @@ export interface Ban extends DatastoreRecord {
   unbanRequestReason?: string;
   unbanRequestToken?: string;
 }
+
+export interface BlogPostMeta {
+  default: ComponentType<{}>;
+  attributes: {
+    meta: Record<string, any>;
+    headers: Record<string, string>;
+  };
+  filename: string;
+}
+
+export type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  publishDate: string;
+  content?: string;
+  draft?: boolean;
+};

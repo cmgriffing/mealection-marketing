@@ -24,7 +24,7 @@ import {
 } from "grumblr-types";
 import { Button, Tag } from "@vechaiui/react";
 import { colorPaletteFromId } from "~/utils/color-palette-from-id";
-import { colors } from "../../../../config/colors";
+import { colors } from "../../../config/colors";
 import { gradeColorMap, scoreToGrade } from "~/utils/grades";
 import { ExegeteButton } from "~/tsbs/ExegeteButton";
 import Case from "case";
@@ -154,35 +154,35 @@ export default function Id() {
           Report: <span className="font-bold">{report.reportId}</span>
         </PageTitle>
         <div className="flex flex-row">
-          <div className="report-type text-xl flex flex-row items-center">
+          <div className="report-type flex flex-row items-center text-xl">
             <span>Type: </span>
-            <span className="capitalize font-bold ml-2">
+            <span className="ml-2 font-bold capitalize">
               {Case.sentence(report.reportType)}
             </span>
           </div>
           <div className="flex flex-grow"></div>
           <Link
             to={`/admin/reports/user/${report.userId}`}
-            className="floating-link flex flex-row space-x-2 rounded items-center justify-center p-2"
+            className="floating-link flex flex-row items-center justify-center space-x-2 rounded p-2"
             style={{ background: `${gradeColorMap[grade]}` }}
           >
-            <div className="bg-white rounded py-1 px-2">User: </div>
+            <div className="rounded bg-white py-1 px-2">User: </div>
             <div className="font-bold">{report.userId}</div>
 
-            <div className="bg-white rounded-full h-8 w-8 flex items-center justify-center font-bold">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white font-bold">
               {grade}
             </div>
           </Link>
         </div>
-        <div className="flex flex-row w-full mt-1 items-center">
+        <div className="mt-1 flex w-full flex-row items-center">
           <div className="">
-            <div className="flex mr-2">
+            <div className="mr-2 flex">
               created:{" "}
-              <span className="font-bold ml-2">
+              <span className="ml-2 font-bold">
                 {dayjs(report.createdAt).from(dayjs())}
               </span>
             </div>
-            <div className="flex mr-2">
+            <div className="mr-2 flex">
               updated:{" "}
               <span className="ml-2 font-bold">
                 {dayjs(report.modifiedAt).from(dayjs())}
@@ -208,9 +208,9 @@ export default function Id() {
         </div>
         <div className="">
           {report.reportType === ReportType.ProfileImage && (
-            <div className="flex flex-col items-center w-full">
+            <div className="flex w-full flex-col items-center">
               {!!extraData.presignedUrl && (
-                <img className="w-96 h-auto" src={extraData.presignedUrl} />
+                <img className="h-auto w-96" src={extraData.presignedUrl} />
               )}
 
               {!extraData.presignedUrl && (
@@ -224,19 +224,19 @@ export default function Id() {
               )}
 
               {report.status !== ReportStatus.Resolved && (
-                <p className="text-4xl m-8">Is this image offensive?</p>
+                <p className="m-8 text-4xl">Is this image offensive?</p>
               )}
             </div>
           )}
 
           {report.reportType === ReportType.MealImage && (
-            <div className="flex flex-col items-center w-full">
+            <div className="flex w-full flex-col items-center">
               {!!extraData.presignedUrl && (
-                <img className="w-96 h-auto" src={extraData.presignedUrl} />
+                <img className="h-auto w-96" src={extraData.presignedUrl} />
               )}
               {!!extraData.meal?.unsplashImageData && (
                 <img
-                  className="w-96 h-auto"
+                  className="h-auto w-96"
                   src={extraData.meal.unsplashImageData.imageUrl}
                 />
               )}
@@ -259,28 +259,28 @@ export default function Id() {
 
           {report.reportType === ReportType.PollName &&
             report.status === ReportStatus.Reported && (
-              <div className="flex flex-col text-center text-4xl p-8">
+              <div className="flex flex-col p-8 text-center text-4xl">
                 Poll Name: {extraData?.poll?.name}
                 <p className="m-8 text-4xl">Is this poll name offensive?</p>
               </div>
             )}
           {report.reportType === ReportType.PollName &&
             report.status === ReportStatus.Resolved && (
-              <div className="flex flex-col text-center text-4xl p-8">
+              <div className="flex flex-col p-8 text-center text-4xl">
                 Poll Name: {report?.reportMeta?.originalName}
               </div>
             )}
 
           {report.reportType === ReportType.MealName &&
             report.status === ReportStatus.Reported && (
-              <div className="flex flex-col text-center text-4xl p-8">
+              <div className="flex flex-col p-8 text-center text-4xl">
                 Meal Name: {extraData?.meal?.name}
                 <p className="m-8 text-4xl">Is this meal name offensive?</p>
               </div>
             )}
           {report.reportType === ReportType.MealName &&
             report.status === ReportStatus.Resolved && (
-              <div className="flex flex-col text-center text-4xl p-8">
+              <div className="flex flex-col p-8 text-center text-4xl">
                 Meal Name: {report?.reportMeta?.originalName}
               </div>
             )}

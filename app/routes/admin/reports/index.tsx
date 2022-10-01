@@ -12,7 +12,7 @@ import {
   useLocation,
 } from "remix";
 import { Form, json } from "remix";
-import heroImage from "../../images/hero.jpg";
+import heroImage from "~/images/hero.jpg";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { axiosLoader } from "~/utils/loaders/axios";
 import { redirectIfNeeded } from "~/utils/redirectIfNeeded";
@@ -163,12 +163,12 @@ export default function UserReports() {
         name="filters-toggle"
         id="filters-toggle"
       />
-      <div className="filters-wrapper bg-primary-300 md:hidden z-10">
+      <div className="filters-wrapper bg-primary-300 z-10 md:hidden">
         <div className="relative">
           <div className="w-full py-2 px-8">
             <form method="GET">
               <div className="flex w-full flex-wrap">
-                <div className="flex flex-col w-1/2 p-2">
+                <div className="flex w-1/2 flex-col p-2">
                   <label>Status: </label>
 
                   <Select
@@ -187,7 +187,7 @@ export default function UserReports() {
                   </Select>
                 </div>
 
-                <div className="flex flex-col w-1/2 p-2">
+                <div className="flex w-1/2 flex-col p-2">
                   <label>Created: </label>
 
                   <Select
@@ -205,7 +205,7 @@ export default function UserReports() {
                   </Select>
                 </div>
 
-                <div className="flex flex-col w-1/2 p-2">
+                <div className="flex w-1/2 flex-col p-2">
                   <label>Type: </label>
 
                   <Select
@@ -228,9 +228,9 @@ export default function UserReports() {
                 </div>
               </div>
 
-              <noscript className="block text-center p-2">
+              <noscript className="block p-2 text-center">
                 <Button
-                  className="w-1/2 m-auto "
+                  className="m-auto w-1/2 "
                   color="primary"
                   variant="solid"
                   type="submit"
@@ -243,7 +243,7 @@ export default function UserReports() {
         </div>
       </div>
 
-      <div className="filters-button md:hidden flex flex-row justify-end w-full">
+      <div className="filters-button flex w-full flex-row justify-end md:hidden">
         <div className=" bg-primary-300 z-10">
           <label
             htmlFor="filters-toggle"
@@ -275,14 +275,14 @@ export default function UserReports() {
 
           <table className="m-auto">
             <thead className="">
-              <tr className="text-left pb-4">
+              <tr className="pb-4 text-left">
                 <th className="table-cell-status pb-4 ">
-                  <div className="inline-block relative pr-2">
+                  <div className="relative inline-block pr-2">
                     <span className="th-head-label">Status</span>
                     <Select
                       size="xs"
                       name="status"
-                      className="w-24 absolute top-0 left-full pr-0"
+                      className="absolute top-0 left-full w-24 pr-0"
                       style={{
                         width:
                           filters.status === CommonFilter.ALL
@@ -303,11 +303,11 @@ export default function UserReports() {
                   </div>
                 </th>
                 <th className="table-cell-created pb-4">
-                  <div className="inline-block relative  pr-2">
+                  <div className="relative inline-block  pr-2">
                     <span className="th-head-label">Created</span>
                     <Select
                       name="createdAt"
-                      className="w-12 absolute top-0 left-full pr-0"
+                      className="absolute top-0 left-full w-12 pr-0"
                       value={filters.createdAt}
                       size="xs"
                       onChange={setCleanSearchParams(
@@ -322,11 +322,11 @@ export default function UserReports() {
                   </div>
                 </th>
                 <th className="table-cell-report-type pb-4">
-                  <div className="inline-block relative pr-2">
+                  <div className="relative inline-block pr-2">
                     <span className="th-head-label">Type</span>
                     <Select
                       name="reportType"
-                      className="w-24 absolute top-0 left-full pr-0"
+                      className="absolute top-0 left-full w-24 pr-0"
                       value={filters.reportType}
                       size="xs"
                       onChange={setCleanSearchParams(
@@ -344,7 +344,7 @@ export default function UserReports() {
                     </Select>
                   </div>
                 </th>
-                <th className="table-header-status pb-4 relative">
+                <th className="table-header-status relative pb-4">
                   <div className="text-center">
                     <span>User ID</span>
                   </div>
@@ -364,7 +364,7 @@ export default function UserReports() {
                       {...props}
                       className={`${
                         props.className || ""
-                      }  p-2 flex items-center min-h-full`}
+                      }  flex min-h-full items-center p-2`}
                     ></Link>
                   );
                 };
@@ -372,7 +372,7 @@ export default function UserReports() {
                 return (
                   <tr
                     key={userReport.reportId}
-                    className={`hover-table-row border border-0 border-t-1 border-primary-700 h-8 ${
+                    className={`hover-table-row border-t-1 border-primary-700 h-8 border border-0 ${
                       index % 2 === 0 ? "bg-primary-200" : "bg-primary-300"
                     } hover:drop-shadow-lg`}
                   >
@@ -430,10 +430,10 @@ export default function UserReports() {
           {userReports.map((userReport: UserReport) => (
             <li
               key={userReport.reportId}
-              className="bg-primary-300 w-full my-10"
+              className="bg-primary-300 my-10 w-full"
             >
-              <div className="flex flex-row items-stretch bg-primary-400">
-                <div className="px-4 py-2 bg-primary-500">
+              <div className="bg-primary-400 flex flex-row items-stretch">
+                <div className="bg-primary-500 px-4 py-2">
                   {Case.title(userReport.reportType).replace("Image", "📷")}
                 </div>
 
@@ -463,7 +463,7 @@ export default function UserReports() {
         </ol>
 
         {!userReports?.length && (
-          <div className="text-center p-8">
+          <div className="p-8 text-center">
             <h2 className="text-2xl">No Reports found.</h2>
           </div>
         )}

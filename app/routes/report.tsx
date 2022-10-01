@@ -9,7 +9,7 @@ import {
 import { Form, json, LoaderFunction } from "remix";
 import { validator } from "./validate.server";
 import { Fragment, useEffect, useState } from "react";
-import reportImage from "../../images/scott-graham-OQMZwNd3ThU-unsplash.jpg";
+import reportImage from "~/images/scott-graham-OQMZwNd3ThU-unsplash.jpg";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { ReportType } from "grumblr-types";
@@ -142,19 +142,19 @@ export default function Index() {
   return (
     <div className="remix__page">
       <main>
-        <section className="text-gray-600 body-font">
-          <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-            <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        <section className="body-font text-gray-600">
+          <div className="container mx-auto flex flex-col items-center px-5 py-24 md:flex-row">
+            <div className="mb-10 w-5/6 md:mb-0 md:w-1/2 lg:w-full lg:max-w-lg">
               <img
-                className="object-cover object-center rounded"
+                className="rounded object-cover object-center"
                 alt="hero"
                 src={reportImage}
               />
             </div>
-            <div className="hero-content lg:flex-grow md:w-1/2  w-5/6 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center">
+            <div className="hero-content flex w-5/6  flex-col items-center md:w-1/2 md:items-start md:pl-16 md:text-left lg:flex-grow lg:pl-24">
               {!userId && (
                 <>
-                  <h1 className="title-font sm:text-4xl text-3xl font-medium text-gray-900">
+                  <h1 className="title-font text-3xl font-medium text-gray-900 sm:text-4xl">
                     No User Found
                   </h1>
                   {false && (
@@ -168,18 +168,18 @@ export default function Index() {
               )}
               {userId && (
                 <>
-                  <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+                  <h1 className="title-font mb-4 text-3xl font-medium text-gray-900 sm:text-4xl">
                     Report
                   </h1>
                   <Form
                     method="post"
-                    className="remix__form flex flex-col w-full md:justify-start justify-center"
+                    className="remix__form flex w-full flex-col justify-center md:justify-start"
                   >
                     <fieldset
-                      className="flex flex-col w-full md:justify-start justify-center  mb-4"
+                      className="mb-4 flex w-full flex-col justify-center  md:justify-start"
                       disabled={transition.state === "submitting"}
                     >
-                      <div className="relative lg:w-full  xl:w-3/4 w-3/4 mx-auto">
+                      <div className="relative mx-auto  w-3/4 lg:w-full xl:w-3/4">
                         <Select
                           htmlId="reportType"
                           htmlLabel="Reason"
@@ -193,13 +193,13 @@ export default function Index() {
                     </fieldset>
 
                     <fieldset
-                      className="flex flex-col w-full md:justify-start justify-center mb-4"
+                      className="mb-4 flex w-full flex-col justify-center md:justify-start"
                       disabled={transition.state === "submitting"}
                     >
-                      <div className="relative lg:w-full xl:w-3/4 w-3/4 mx-auto">
+                      <div className="relative mx-auto w-3/4 lg:w-full xl:w-3/4">
                         <label
                           htmlFor="hero-field"
-                          className="leading-7 text-sm text-gray-600"
+                          className="text-sm leading-7 text-gray-600"
                         >
                           Extra Details{" "}
                           <span className="text-gray-400">(optional)</span>
@@ -207,18 +207,18 @@ export default function Index() {
                         <div>
                           <textarea
                             value={extraDetails}
-                            className={`h-24 w-full bg-opacity-50 rounded border ${
+                            className={`h-24 w-full rounded border bg-opacity-50 ${
                               extraDetails.length <= EXTRA_DETAILS_MAX_LENGTH
-                                ? "bg-gray-100 border-gray-300 focus:ring-2 focus:ring-green-200 focus:bg-transparent focus:border-green-500"
-                                : "bg-red-100 border-red-300 focus:ring-2 focus:ring-red-200 focus:bg-transparent focus:border-red-500"
-                            } text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                                ? "border-gray-300 bg-gray-100 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200"
+                                : "border-red-300 bg-red-100 focus:border-red-500 focus:bg-transparent focus:ring-2 focus:ring-red-200"
+                            } outline-none py-1 px-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out`}
                             onChange={(event) =>
                               setExtraDetails(event.target.value)
                             }
                           />
 
                           <div
-                            className={`text-right items-end justify-end ${
+                            className={`items-end justify-end text-right ${
                               extraDetails.length > EXTRA_DETAILS_MAX_LENGTH
                                 ? "text-red-500"
                                 : "text-green-500"
@@ -244,11 +244,11 @@ export default function Index() {
                     <input name="teamId" type="hidden" value={teamId} />
 
                     <fieldset
-                      className="flex flex-col  lg:w-full xl:w-3/4 w-3/4 md:justify-start justify-center mx-auto"
+                      className="mx-auto flex  w-3/4 flex-col justify-center md:justify-start lg:w-full xl:w-3/4"
                       disabled={transition.state === "submitting"}
                     >
                       <button
-                        className="submit-button text-center text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg whitespace-nowrap"
+                        className="submit-button focus:outline-none whitespace-nowrap rounded border-0 bg-green-500 py-2 px-6 text-center text-lg text-white hover:bg-green-600"
                         disabled={
                           transition.state === "submitting" ||
                           !isValid({
@@ -266,7 +266,7 @@ export default function Index() {
                       </button>
                     </fieldset>
                   </Form>
-                  <p className="text-sm mt-2 text-red-500 lg:w-full xl:w-3/4 w-3/4 mx-auto">
+                  <p className="mx-auto mt-2 w-3/4 text-sm text-red-500 lg:w-full xl:w-3/4">
                     {transition.state === "idle" &&
                       showError &&
                       "There was an error submitting your report. Please try again later. Thanks."}
@@ -360,14 +360,14 @@ function Select({
 }) {
   return (
     <div className="w-full">
-      <label htmlFor={htmlId} className="leading-7 text-sm text-gray-600">
+      <label htmlFor={htmlId} className="text-sm leading-7 text-gray-600">
         {htmlLabel}
       </label>
       <select
         id={htmlId}
         name={htmlId}
         value={selectedItem.value}
-        className="form-select block w-full pr-8 text-sm truncate transition rounded bg-opacity-50 bg-gray-100 border-gray-300 focus:ring-2 focus:ring-green-200 focus:bg-transparent focus:border-green-500 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+        className="form-select block w-full truncate rounded border-gray-300 bg-gray-100 bg-opacity-50 pr-8 text-sm transition focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
         onChange={({ target: { value: newlySelectedItem } }) => {
           onSelectChange(
             items.find((item) => item.value === newlySelectedItem) || items[0]

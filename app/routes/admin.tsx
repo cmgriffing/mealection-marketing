@@ -11,7 +11,7 @@ import {
   LinksFunction,
 } from "remix";
 import { Form, json } from "remix";
-import heroImage from "../../images/hero.jpg";
+import heroImage from "~/images/hero.jpg";
 import { useEffect, useState } from "react";
 import { authenticator } from "~/services/auth.server";
 import { Button, VechaiProvider, extendTheme } from "@vechaiui/react";
@@ -20,7 +20,7 @@ import dashboardFilled from "@iconify/icons-ant-design/dashboard-filled";
 import userVoice from "@iconify/icons-bxs/user-voice";
 import bugIcon from "@iconify/icons-bxs/bug";
 import { userLoader } from "~/utils/loaders/user";
-import { colors } from "../../config/colors";
+import { colors } from "~/config/colors";
 // import { authLoader } from "~/utils/auth-loader";
 import adminLayoutStyles from "~/styles/admin/layout.css";
 
@@ -64,26 +64,26 @@ export default function Admin({ children }: { children: React.ReactNode }) {
   return (
     <VechaiProvider>
       <div
-        className={`remix__page flex flex-col flex-grow ${
+        className={`remix__page flex flex-grow flex-col ${
           hasJs ? "has-js" : ""
         }`}
       >
-        <div className="h-screen flex flex-col flex-grow overflow-y-hidden">
+        <div className="flex h-screen flex-grow flex-col overflow-y-hidden">
           <div
-            className={`loader-bar h-2 bg-primary-500 ${
+            className={`loader-bar bg-primary-500 h-2 ${
               showingLoader ? "loading" : ""
             } ${showingUnloader ? "unloading" : ""}`}
           ></div>
-          <div className="header h-12 bg-primary-400 py-2 px-8 flex flex-row items-center justify-start z-10">
+          <div className="header bg-primary-400 z-10 flex h-12 flex-row items-center justify-start py-2 px-8">
             <label
-              className="sidebar-menu-button text-2xl mr-4"
+              className="sidebar-menu-button mr-4 text-2xl"
               htmlFor="sidebar-menu-toggle"
             >
               ☰
             </label>
             <h2>Mealection</h2>
           </div>
-          <div className="main h-full flex flex-row flex-grow bg-black">
+          <div className="main flex h-full flex-grow flex-row bg-black">
             <input
               type="checkbox"
               id="sidebar-menu-toggle"
@@ -94,7 +94,7 @@ export default function Admin({ children }: { children: React.ReactNode }) {
                 setShowingSidebar(!showingSidebar);
               }}
             />
-            <div className="main-sidebar-wrapper lg:block bg-primary-300">
+            <div className="main-sidebar-wrapper bg-primary-300 lg:block">
               <div className="main-sidebar w-72 py-4 px-8">
                 <ul>
                   {[
@@ -141,12 +141,12 @@ export default function Admin({ children }: { children: React.ReactNode }) {
                 </ul>
               </div>
             </div>
-            <div className="main-content-wrapper  overflow-x-hidden bg-black relative">
+            <div className="main-content-wrapper  relative overflow-x-hidden bg-black">
               <label
-                className="backdrop block absolute top-0 right-0 bottom-0 left-0 z-20"
+                className="backdrop absolute top-0 right-0 bottom-0 left-0 z-20 block"
                 htmlFor="sidebar-menu-toggle"
               ></label>
-              <main className="main-content h-full overflow-y-auto w-screen flex flex-col flex-grow bg-primary-200 pb-16">
+              <main className="main-content bg-primary-200 flex h-full w-screen flex-grow flex-col overflow-y-auto pb-16">
                 <Outlet />
               </main>
             </div>

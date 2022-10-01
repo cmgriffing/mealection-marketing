@@ -237,15 +237,15 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <StoreProvider store={AuthStore}>
-      <div className="remix-app min-h-screen flex flex-col flex-grow">
-        <div className="remix-app__main flex flex-col flex-grow">
-          <div className="remix-app__main-content  flex flex-col flex-grow">
+      <div className="remix-app flex min-h-screen flex-grow flex-col">
+        <div className="remix-app__main flex flex-grow flex-col">
+          <div className="remix-app__main-content  flex flex-grow flex-col">
             {children}
           </div>
         </div>
         {isAdmin && (
           <footer className="remix-app__footer">
-            <div className="container remix-app__footer-content text-center">
+            <div className="remix-app__footer-content container text-center">
               <p>&copy; {new Date().getFullYear()} Mealection</p>
             </div>
           </footer>
