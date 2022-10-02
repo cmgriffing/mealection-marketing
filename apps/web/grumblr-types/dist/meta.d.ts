@@ -1,4 +1,4 @@
-import { Meal, Poll, PollVote, Restaurant, Tables, Team, Teammate, User } from "./types";
+import { Meal, Poll, PollVote, Restaurant, Subscription, Tables, Team, Teammate, User } from "./types";
 export interface TableTypes {
     [Tables.Users]: User;
     [Tables.Polls]: Poll;
@@ -7,5 +7,6 @@ export interface TableTypes {
     [Tables.Teams]: Team;
     [Tables.Teammates]: Teammate;
     [Tables.PollVotes]: PollVote;
+    [Tables.Subscriptions]: Subscription;
 }
 //# sourceMappingURL=meta.d.ts.map

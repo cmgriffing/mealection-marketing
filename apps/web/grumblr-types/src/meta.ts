@@ -3,6 +3,7 @@ import {
   Poll,
   PollVote,
   Restaurant,
+  Subscription,
   Tables,
   Team,
   Teammate,
@@ -17,4 +18,5 @@ export interface TableTypes {
   [Tables.Teams]: Team;
   [Tables.Teammates]: Teammate;
   [Tables.PollVotes]: PollVote;
+  [Tables.Subscriptions]: Subscription;
 }

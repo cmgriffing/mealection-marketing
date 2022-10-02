@@ -18,6 +18,7 @@ export enum Tables {
   Reports = "reports",
   WebSocketPollConnections = "webSocketPollConnections",
   Bans = "bans",
+  Subscriptions = "subscriptions",
 }
 
 export interface UnsplashImageData {
@@ -58,6 +59,7 @@ export enum BanReason {
 export enum SubscriptionType {
   Monthly = "monthly",
   Yearly = "yearly",
+  Beta = "beta",
 }
 
 export enum SubscriptionTier {
@@ -73,6 +75,7 @@ export enum SubscriptionPricingVersion {
 export enum Marketplace {
   Apple = "apple",
   Android = "android",
+  Internal = "internal",
 }
 
 export interface Subscription extends DatastoreRecord {
@@ -818,4 +821,27 @@ export interface RestaurantDetailsResponse {
         is_overnight: boolean;
       }[]
     | null;
+}
+
+enum IAPItemType {
+  PURCHASE = 0,
+  SUBSCRIPTION = 1,
+}
+
+interface IAPItemDetails {
+  title: string;
+  description: string;
+  productId: string;
+  price: string;
+  priceAmountMicros: number;
+  priceCurrencyCode: string;
+  type: IAPItemType;
+  subscriptionPeriod?: string;
+}
+
+export interface Product {
+  name: string;
+  duration: string;
+  version: number;
+  iapItemDetails: IAPItemDetails;
 }

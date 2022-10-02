@@ -22,6 +22,7 @@ var Tables;
     Tables["Reports"] = "reports";
     Tables["WebSocketPollConnections"] = "webSocketPollConnections";
     Tables["Bans"] = "bans";
+    Tables["Subscriptions"] = "subscriptions";
 })(Tables = exports.Tables || (exports.Tables = {}));
 var SpecialUserRole;
 (function (SpecialUserRole) {
@@ -38,6 +39,7 @@ var SubscriptionType;
 (function (SubscriptionType) {
     SubscriptionType["Monthly"] = "monthly";
     SubscriptionType["Yearly"] = "yearly";
+    SubscriptionType["Beta"] = "beta";
 })(SubscriptionType = exports.SubscriptionType || (exports.SubscriptionType = {}));
 var SubscriptionTier;
 (function (SubscriptionTier) {
@@ -53,6 +55,7 @@ var Marketplace;
 (function (Marketplace) {
     Marketplace["Apple"] = "apple";
     Marketplace["Android"] = "android";
+    Marketplace["Internal"] = "internal";
 })(Marketplace = exports.Marketplace || (exports.Marketplace = {}));
 var PollType;
 (function (PollType) {
@@ -92,3 +95,8 @@ var ModificationHistoryAction;
     ModificationHistoryAction["Banned"] = "banned";
     ModificationHistoryAction["Unbanned"] = "unbanned";
 })(ModificationHistoryAction = exports.ModificationHistoryAction || (exports.ModificationHistoryAction = {}));
+var IAPItemType;
+(function (IAPItemType) {
+    IAPItemType[IAPItemType["PURCHASE"] = 0] = "PURCHASE";
+    IAPItemType[IAPItemType["SUBSCRIPTION"] = 1] = "SUBSCRIPTION";
+})(IAPItemType || (IAPItemType = {}));
