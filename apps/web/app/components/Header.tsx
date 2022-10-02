@@ -1,5 +1,6 @@
 import Color from "color";
 import React, { PropsWithChildren } from "react";
+import { Link } from "remix";
 import { colors } from "~/config/colors";
 
 import mealectionLogoImage from "~/images/mealection-logo.png";
@@ -17,7 +18,7 @@ export function Header({
       className="main-header body-font mb-12 bg-cover text-gray-600 shadow-md"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
-      <div>
+      <Link to="/">
         <div className="container mx-auto flex flex-row items-center py-4">
           <img
             className="border-error-500 h-auto max-w-[40px] rounded border-4 border-solid shadow-md"
@@ -33,7 +34,7 @@ export function Header({
             Mealection
           </h1>
         </div>
-      </div>
+      </Link>
       <div className="mx-auto flex flex-col items-center md:flex-row">
         <div className="flex flex-col md:w-1/2 lg:flex-grow">{children}</div>
       </div>

@@ -6,13 +6,19 @@ meta:
 links: []
 ---
 
+import PixellatedImage from "~/images/optimized/forking-react-native-boring-avatars/pixellated.png";
+import CleanImage from "~/images/optimized/forking-react-native-boring-avatars/clean.png";
+
 ## Why the fork?
 
 The original library, `react-native-boring-avatars`, worked great at first. If you didn't know SVGs are not natively supported in React Native. You end up needing a library called `react-native-svg`. Due to a quirk in how that depenedency works, it caused major pixellization when creating avatars that are larger than average.
 
 Here you can see an example:
 
-![]("~/images/scott-graham-OQMZwNd3ThU-unsplash.jpg")
+<img
+  alt="Example of pixellated output from Mealection using old library."
+  src={PixellatedImage}
+/>
 
 ## What is causing this?
 
@@ -24,7 +30,10 @@ Fixing it involved using the width value passed into Boring Avatars as the `view
 
 The end result works great though:
 
-![some image](~/images/scott-graham-OQMZwNd3ThU-unsplash.jpg)
+<img
+  alt="Example of clean output from Mealection using new library. No Pixellation is immediately obvious."
+  src={CleanImage}
+/>
 
 ## Wrapping up
 

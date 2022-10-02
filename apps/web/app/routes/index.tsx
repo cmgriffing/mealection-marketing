@@ -190,7 +190,7 @@ export default function Index() {
           className="body-font mb-24 bg-cover text-gray-600 shadow-md"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="">
+          <div className="main-header">
             <div className="container mx-auto flex flex-row items-center py-4">
               <img
                 className="border-error-500 h-auto max-w-[40px] rounded border-4 border-solid shadow-md"

@@ -15,6 +15,7 @@ import type { LinksFunction } from "remix";
 
 import overridesUrl from "./styles/overrides.css";
 import tailwindUrl from "./styles/tailwind.css";
+import highlightUrl from "highlight.js/styles/lioshi.css";
 import { createStore, persist, StoreProvider } from "easy-peasy";
 import { AuthStore } from "./stores/auth";
 
@@ -33,6 +34,7 @@ export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: tailwindUrl },
     { rel: "stylesheet", href: overridesUrl },
+    { rel: "stylesheet", href: highlightUrl },
     { rel: "stylesheet", href: "/fontsource/nunito/index.css" },
     { rel: "stylesheet", href: "/fontsource/bevan/index.css" },
     {
