@@ -3,7 +3,7 @@
  */
 module.exports = {
   appDirectory: "app",
-  watchPaths: ["../../packages/remark-remix-image"],
+  // watchPaths: ["../../packages/remark-remix-image"],
   browserBuildDirectory: "public/build",
   publicPath: "/build/",
   serverBuildDirectory: "api/build",
