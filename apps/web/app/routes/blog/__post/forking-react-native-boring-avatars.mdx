@@ -1,0 +1,31 @@
+---
+meta:
+  title: Forking react-native-boring-avatars
+  publishDate: 10-01-2022
+  description: Sometimes you have to take matters into your own hands. We forked react-native-boring-avatars because it the drawing method produced low resolution output at large sizes.
+links: []
+---
+
+## Why the fork?
+
+The original library, `react-native-boring-avatars`, worked great at first. If you didn't know SVGs are not natively supported in React Native. You end up needing a library called `react-native-svg`. Due to a quirk in how that depenedency works, it caused major pixellization when creating avatars that are larger than average.
+
+Here you can see an example:
+
+![]("~/images/scott-graham-OQMZwNd3ThU-unsplash.jpg")
+
+## What is causing this?
+
+It turns out that `react-native-svg` needs to rasterize the SVG image before it renders it out to a standard React Native `Image` component. Boring Avatars, even the original React version, uses a smallish `viewBox` value and then relies upon upscaling SVGs. In a browser this works fine, since they stay SVG the whole time. In React Native, this is an issue because the Image view gets resized after `react-native-svg` has done its rasterization step.
+
+## How did we fix it?
+
+Fixing it involved using the width value passed into Boring Avatars as the `viewBox` size instead of the "magic numbers" that exist in the original code. To make that work properly, it involved a fair bit of trial and error while seeing which other magic numbers in the SVG code needed to be scaled based on a width prop. So, we got to do lot's of fun fiddly math.
+
+The end result works great though:
+
+![some image](~/images/scott-graham-OQMZwNd3ThU-unsplash.jpg)
+
+## Wrapping up
+
+We ended releasing our fork since we had to change so much of the original code. You can get it here: [https://github.com](https://github.com). We hoped you like reading this and if you want to see fork in action, sign up for the app from the [home page](https://mealection.com).

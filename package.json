@@ -1,74 +1,25 @@
 {
+  "name": "mealection-marketing-monorepo",
+  "version": "0.0.0",
   "private": true,
-  "name": "remix-app-template",
-  "description": "",
-  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "get-types:clone": "rm -rf grumblr-types && git clone https://github.com/cmgriffing/grumblr-types.git && rm -rf ./grumblr-types/.git",
-    "get-types:copy": "cp -R ./grumblr-types ./node_modules/grumblr-types",
-    "get-types": "npm-run-all -s get-types:clone get-types:copy",
-    "tailwind:dev": "tailwindcss --output ./app/styles/tailwind.css --config ./app/config/tailwind.js --watch",
-    "tailwind:build": "tailwindcss --output ./app/styles/tailwind.css --config ./app/config/tailwind.js --minify",
-    "remix:dev": "node -r dotenv/config node_modules/.bin/remix dev",
-    "remix:build": "remix build",
-    "dev": "npm-run-all -p tailwind:dev remix:dev",
-    "prebuild": "npm run get-types:copy",
-    "build": "npm-run-all -s tailwind:build remix:build",
-    "postinstall": "remix setup node"
-  },
-  "dependencies": {
-    "@fontsource/bevan": "^4.5.7",
-    "@fontsource/nunito": "^4.5.8",
-    "@headlessui/react": "^1.4.3",
-    "@heroicons/react": "^1.0.5",
-    "@iconify/icons-bi": "^1.2.2",
-    "@react-hook/window-scroll": "^1.3.0",
-    "@react-hook/window-size": "^3.0.7",
-    "@remix-run/react": "^1.7.2",
-    "@remix-run/serve": "^1.7.2",
-    "@remix-run/vercel": "^1.7.2",
-    "@tailwindcss/forms": "^0.5.0",
-    "@vechaiui/core": "^0.6.0",
-    "@vechaiui/react": "^0.2.1",
-    "boring-avatars": "^1.6.3",
-    "case": "^1.6.3",
-    "color": "^4.2.1",
-    "deep-email-validator": "^0.1.18",
-    "dotenv": "^10.0.0",
-    "easy-peasy": "^5.0.4",
-    "is-ios": "^2.1.0",
-    "jwt-decode": "^3.1.2",
-    "nice-color-palettes": "^3.0.0",
-    "react": "^18.0.15",
-    "react-dom": "^18.0.6",
-    "remix": "^1.7.2",
-    "remix-auth": "^3.2.1",
-    "remix-auth-form": "^1.1.1",
-    "tailwindcss": "^3.1.8",
-    "tiny-invariant": "^1.3.1",
-    "victory": "^36.6.8"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@iconify/icons-ant-design": "^1.2.2",
-    "@iconify/icons-bxs": "^1.2.2",
-    "@iconify/react": "^3.1.4",
-    "@ngneat/falso": "^3.1.0",
-    "@remix-run/dev": "^1.7.2",
-    "@types/color": "^3.0.3",
-    "@types/fs-extra": "^9.0.13",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "dayjs": "^1.10.8",
-    "fs-extra": "^10.0.1",
-    "grumblr-types": "https://github.com/cmgriffing/grumblr-types",
-    "nanoid": "^3.3.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.13",
-    "typescript": "^4.7.4"
+    "eslint-config-custom": "workspace:*",
+    "prettier": "latest",
+    "turbo": "latest"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=14.0.0"
   },
-  "sideEffects": false
+  "dependencies": {},
+  "packageManager": "pnpm@7.12.2"
 }
