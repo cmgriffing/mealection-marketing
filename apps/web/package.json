@@ -68,7 +68,6 @@
     "dayjs": "^1.10.8",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
-    "grumblr-types": "https://github.com/cmgriffing/grumblr-types.git",
     "mdast-util-to-string": "^3.1.0",
     "nanoid": "^3.3.1",
     "npm-run-all": "^4.1.5",
