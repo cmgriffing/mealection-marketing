@@ -3,9 +3,10 @@
     "apps": [],
     "details": [
       {
-        "appID": "YENQ36V88D.com.cmgriffing.mealection",
+        "appID": "6443837631.com.mealection.mobile",
         "paths": [
-          "/registration/verify"
+          "/app/register",
+          "/app/accept-invite"
         ]
       }
     ]
