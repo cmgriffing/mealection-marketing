@@ -3,6 +3,19 @@
     "apps": [],
     "details": [
       {
+        "appIDs": [
+          "6443837631.com.mealection.mobile"
+        ],
+        "components": [
+          {
+            "/": "/app/register"
+          },
+          {
+            "/": "/app/accept-invite"
+          }
+        ]
+      },
+      {
         "appID": "6443837631.com.mealection.mobile",
         "paths": [
           "/app/register",
