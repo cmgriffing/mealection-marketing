@@ -24,6 +24,7 @@ export function Header({
             className="border-error-500 h-auto max-w-[40px] rounded border-4 border-solid shadow-md"
             src={mealectionLogoImage}
           />
+          <div idontexist="foo"></div>
           <h1
             className="title text-primary-300 ml-4 text-3xl"
             style={{

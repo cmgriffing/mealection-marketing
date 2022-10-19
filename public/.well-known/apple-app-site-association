@@ -8,7 +8,13 @@
         ],
         "components": [
           {
+            "/": "/app/reset-password"
+          },
+          {
             "/": "/app/register"
+          },
+          {
+            "/": "/app/register/verify"
           },
           {
             "/": "/app/accept-invite"
@@ -19,6 +25,8 @@
         "appID": "6443837631.com.mealection.mobile",
         "paths": [
           "/app/register",
+          "/app/reset-password",
+          "/app/register/verify",
           "/app/accept-invite"
         ]
       }
